@@ -20,5 +20,10 @@ import app_board.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',app_board.views.home, name="home"),
-    path('<int:post_id>/',app_board.views.detail, name="detail"),
+    path('app_board/<int:post_id>/',app_board.views.detail, name="detail"),
+    path('new/',app_board.views.new, name='new'),
+    path('create/',app_board.views.create, name='create'),
+    path('edit/<int:post_id>',app_board.views.edit, name="edit"),
+    path('update/<int:post_id>',app_board.views.update, name="update"),
+    path('delete/<int:post_id>',app_board.views.delete, name="delete"),
 ]

@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +9,28 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Home Page</h1>
-    {% for post in posts.all%}
-    <h1>{{post.name}}</h1>
-    <h2>{{post.writer}}</h2>
-    <p>{{post.date}}</p>
-    <p>{{post.summary}}<a href="{% url 'detail' post.id %}">자세히 보기</a></p>
-    {% endfor %}
+    <br>
+        <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" style="text-align: center;">제목</th>
+                        <th scope="col" style="text-align: center;">작성자</th>
+                        <th scope="col" style="text-align: center;">작성일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for post in posts.all%}
+                    <tr>
+                        <td style="text-align: center;"><a href="{% url 'detail' post.id %}">{{post.name}}</a></td>
+                        <td style="text-align: center;">{{post.writer}}</td>
+                        <td style="text-align: center;">{{post.date}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div style="float: right; margin:10px;">
+            <a href="{%url 'new'%}" class="btn btn-primary">글 작성</a>
+            </div>
 </body>
 </html>
+{% endblock %}
